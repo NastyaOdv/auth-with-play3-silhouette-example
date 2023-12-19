@@ -1,8 +1,8 @@
 package utils.auth
 
-import com.mohiva.play.silhouette.api.Env
-import com.mohiva.play.silhouette.impl.authenticators.JWTAuthenticator
 import models.User
+import play.silhouette.api.Env
+import play.silhouette.impl.authenticators.JWTAuthenticator
 
 /**
  * The JWT environment.

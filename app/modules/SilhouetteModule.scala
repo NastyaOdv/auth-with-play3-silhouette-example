@@ -1,25 +1,25 @@
 package modules
 
 import com.google.inject.{ AbstractModule, Provides }
-import com.mohiva.play.silhouette.api.actions.{ SecuredErrorHandler, UnsecuredErrorHandler }
-import com.mohiva.play.silhouette.api.crypto._
-import com.mohiva.play.silhouette.api.repositories.AuthInfoRepository
-import com.mohiva.play.silhouette.api.services._
-import com.mohiva.play.silhouette.api.util._
-import com.mohiva.play.silhouette.api.{ Environment, EventBus, Silhouette, SilhouetteProvider }
-import com.mohiva.play.silhouette.crypto.{ JcaCrypter, JcaCrypterSettings }
-import com.mohiva.play.silhouette.impl.authenticators._
-import com.mohiva.play.silhouette.impl.providers._
-import com.mohiva.play.silhouette.impl.util._
-import com.mohiva.play.silhouette.password.{ BCryptPasswordHasher, BCryptSha256PasswordHasher }
-import com.mohiva.play.silhouette.persistence.daos.DelegableAuthInfoDAO
-import com.mohiva.play.silhouette.persistence.repositories.DelegableAuthInfoRepository
 import controllers.{ DefaultSilhouetteControllerComponents, SilhouetteControllerComponents }
 import models.daos.{ PasswordInfoImpl, UserDAO }
 import models.services.UserService
 import net.codingwell.scalaguice.ScalaModule
 import play.api.Configuration
 import play.api.libs.ws.WSClient
+import play.silhouette.api.actions.{ SecuredErrorHandler, UnsecuredErrorHandler }
+import play.silhouette.api.crypto.{ Crypter, CrypterAuthenticatorEncoder }
+import play.silhouette.api.repositories.AuthInfoRepository
+import play.silhouette.api.services.AuthenticatorService
+import play.silhouette.api.util.{ Clock, HTTPLayer, IDGenerator, PasswordHasherRegistry, PasswordInfo, PlayHTTPLayer }
+import play.silhouette.api.{ Environment, EventBus, Silhouette, SilhouetteProvider }
+import play.silhouette.crypto.{ JcaCrypter, JcaCrypterSettings }
+import play.silhouette.impl.authenticators.{ JWTAuthenticator, JWTAuthenticatorService, JWTAuthenticatorSettings }
+import play.silhouette.impl.providers.CredentialsProvider
+import play.silhouette.impl.util.SecureRandomIDGenerator
+import play.silhouette.password.{ BCryptPasswordHasher, BCryptSha256PasswordHasher }
+import play.silhouette.persistence.daos.DelegableAuthInfoDAO
+import play.silhouette.persistence.repositories.DelegableAuthInfoRepository
 import utils.auth.{ CustomSecuredErrorHandler, CustomUnsecuredErrorHandler, JWTEnvironment }
 
 import scala.concurrent.ExecutionContext.Implicits.global

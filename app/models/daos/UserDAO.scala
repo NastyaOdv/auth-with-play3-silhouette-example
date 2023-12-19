@@ -1,7 +1,7 @@
 package models.daos
 
-import com.mohiva.play.silhouette.api.LoginInfo
 import models.User
+import play.silhouette.api.LoginInfo
 
 import scala.concurrent.Future
 

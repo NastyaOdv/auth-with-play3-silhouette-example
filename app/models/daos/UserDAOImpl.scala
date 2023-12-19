@@ -1,10 +1,10 @@
 package models.daos
 
 import com.google.inject.Inject
-import com.mohiva.play.silhouette.api.LoginInfo
 import models.User
 import models.tables.UserTable
 import play.api.db.slick.DatabaseConfigProvider
+import play.silhouette.api.LoginInfo
 import slick.jdbc.JdbcProfile
 import slick.jdbc.PostgresProfile.api._
 

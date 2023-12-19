@@ -1,9 +1,9 @@
 package models.services
 
-import com.mohiva.play.silhouette.api.LoginInfo
 import javax.inject.Inject
 import models.User
 import models.daos.UserDAO
+import play.silhouette.api.LoginInfo
 
 import scala.concurrent.{ ExecutionContext, Future }
 

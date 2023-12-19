@@ -4,30 +4,30 @@ import scalariform.formatter.preferences._
 
 name := "auth-with-play-silhouette-example"
 
-version := "1.0.0"
+version := "1.0-SNAPSHOT"
 
-scalaVersion := "2.13.1"
+scalaVersion := "2.13.0"
 
 resolvers += Resolver.jcenterRepo
 
 resolvers += "Sonatype snapshots" at "https://oss.sonatype.org/content/repositories/snapshots/"
 
-val playSilhouetteVersion = "6.1.1"
-val slickVersion = "3.3.3"
-val playSlickVersion = "5.0.0"
+val playSilhouetteVersion = "10.0.0"
+val slickVersion = "3.4.1"
+val playSlickVersion = "6.0.0"
 
 libraryDependencies ++= Seq(
-  "com.mohiva" %% "play-silhouette" % playSilhouetteVersion,
-  "com.mohiva" %% "play-silhouette-password-bcrypt" % playSilhouetteVersion,
-  "com.mohiva" %% "play-silhouette-persistence" % playSilhouetteVersion,
-  "com.mohiva" %% "play-silhouette-crypto-jca" % playSilhouetteVersion,
-  "net.codingwell" %% "scala-guice" % "4.2.6",
+  "org.playframework.silhouette" %% "play-silhouette" % playSilhouetteVersion,
+  "org.playframework.silhouette" %% "play-silhouette-password-bcrypt" % playSilhouetteVersion,
+  "org.playframework.silhouette" %% "play-silhouette-persistence" % playSilhouetteVersion,
+  "org.playframework.silhouette" %% "play-silhouette-crypto-jca" % playSilhouetteVersion,
+  "net.codingwell" %% "scala-guice" % "6.0.0",
   "com.typesafe.slick" %% "slick" % slickVersion,
   "com.typesafe.slick" %% "slick-hikaricp" % slickVersion,
-  "com.typesafe.play" %% "play-slick" % playSlickVersion,
-  "com.typesafe.play" %% "play-slick-evolutions" % playSlickVersion,
+  "org.playframework" %% "play-slick" % playSlickVersion,
+  "org.playframework" %% "play-slick-evolutions" % playSlickVersion,
   //it's org.postgresql.ds.PGSimpleDataSource dependency
-  "org.postgresql" % "postgresql" % "9.4-1206-jdbc42",
+  "org.postgresql" % "postgresql" % "42.5.4",
   guice,
   filters
 )

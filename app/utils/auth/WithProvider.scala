@@ -1,8 +1,8 @@
 package utils.auth
 
-import com.mohiva.play.silhouette.api.{ Authenticator, Authorization }
 import models.User
 import play.api.mvc.Request
+import play.silhouette.api.{ Authenticator, Authorization }
 
 import scala.concurrent.Future
 

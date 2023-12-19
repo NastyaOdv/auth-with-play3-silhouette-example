@@ -1,13 +1,13 @@
 package controllers
 
-import com.mohiva.play.silhouette.api.actions.SecuredRequest
-import com.mohiva.play.silhouette.api.exceptions.ProviderException
-import com.mohiva.play.silhouette.api.util.Credentials
-import com.mohiva.play.silhouette.impl.providers.CredentialsProvider
 import javax.inject.Inject
 import play.api.i18n.Lang
 import play.api.libs.json.{ JsString, Json }
 import play.api.mvc._
+import play.silhouette.api.actions.SecuredRequest
+import play.silhouette.api.exceptions.ProviderException
+import play.silhouette.api.util.Credentials
+import play.silhouette.impl.providers.CredentialsProvider
 import utils.auth.{ JWTEnvironment, WithProvider }
 
 import scala.concurrent.{ ExecutionContext, Future }
