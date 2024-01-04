@@ -1,11 +1,10 @@
 package models
 
 import org.apache.pekko.http.javadsl.model.DateTime
-import play.api.libs.json.{ JsError, JsSuccess, Reads }
+import play.api.libs.json.{JsSuccess, Reads}
 
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
-import scala.util.{ Failure, Success }
 
 trait DTReader {
   implicit val dateTimeReader: Reads[DateTime] = Reads { json =>

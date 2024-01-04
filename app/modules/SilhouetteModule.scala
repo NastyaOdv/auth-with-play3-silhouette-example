@@ -1,29 +1,29 @@
 package modules
 
-import com.google.inject.{ AbstractModule, Provides }
-import controllers.{ DefaultSilhouetteControllerComponents, SilhouetteControllerComponents }
-import models.daos.{ PasswordInfoImpl, UserDAO }
+import com.google.inject.{AbstractModule, Provides}
+import controllers.{DefaultSilhouetteControllerComponents, SilhouetteControllerComponents}
+import models.daos.{PasswordInfoImpl, UserDAO}
 import models.services.UserService
 import net.codingwell.scalaguice.ScalaModule
 import play.api.Configuration
 import play.api.libs.ws.WSClient
-import play.silhouette.api.actions.{ SecuredErrorHandler, UnsecuredErrorHandler }
-import play.silhouette.api.crypto.{ Crypter, CrypterAuthenticatorEncoder }
+import play.silhouette.api.actions.{SecuredErrorHandler, UnsecuredErrorHandler}
+import play.silhouette.api.crypto.{Crypter, CrypterAuthenticatorEncoder}
 import play.silhouette.api.repositories.AuthInfoRepository
 import play.silhouette.api.services.AuthenticatorService
-import play.silhouette.api.util.{ Clock, HTTPLayer, IDGenerator, PasswordHasherRegistry, PasswordInfo, PlayHTTPLayer }
-import play.silhouette.api.{ Environment, EventBus, Silhouette, SilhouetteProvider }
-import play.silhouette.crypto.{ JcaCrypter, JcaCrypterSettings }
-import play.silhouette.impl.authenticators.{ JWTAuthenticator, JWTAuthenticatorService, JWTAuthenticatorSettings }
+import play.silhouette.api.util._
+import play.silhouette.api.{Environment, EventBus, Silhouette, SilhouetteProvider}
+import play.silhouette.crypto.{JcaCrypter, JcaCrypterSettings}
+import play.silhouette.impl.authenticators.{JWTAuthenticator, JWTAuthenticatorService, JWTAuthenticatorSettings}
 import play.silhouette.impl.providers.CredentialsProvider
 import play.silhouette.impl.util.SecureRandomIDGenerator
-import play.silhouette.password.{ BCryptPasswordHasher, BCryptSha256PasswordHasher }
+import play.silhouette.password.{BCryptPasswordHasher, BCryptSha256PasswordHasher}
 import play.silhouette.persistence.daos.DelegableAuthInfoDAO
 import play.silhouette.persistence.repositories.DelegableAuthInfoRepository
-import utils.auth.{ CustomSecuredErrorHandler, CustomUnsecuredErrorHandler, JWTEnvironment }
+import utils.auth.{CustomSecuredErrorHandler, CustomUnsecuredErrorHandler, JWTEnvironment}
 
 import scala.concurrent.ExecutionContext.Implicits.global
-import scala.concurrent.duration.{ Duration, FiniteDuration }
+import scala.concurrent.duration.{Duration, FiniteDuration}
 
 /**
  * The Guice module which wires all Silhouette dependencies.
@@ -149,8 +149,8 @@ class SilhouetteModule extends AbstractModule with ScalaModule {
    */
   @Provides
   def provideCredentialsProvider(
-    authInfoRepository: AuthInfoRepository,
-    passwordHasherRegistry: PasswordHasherRegistry): CredentialsProvider = {
+                                  authInfoRepository: AuthInfoRepository,
+                                  passwordHasherRegistry: PasswordHasherRegistry): CredentialsProvider = {
 
     new CredentialsProvider(authInfoRepository, passwordHasherRegistry)
   }

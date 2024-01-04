@@ -5,13 +5,14 @@ import play.silhouette.api.LoginInfo
 import play.silhouette.api.util.PasswordInfo
 import play.silhouette.persistence.daos.DelegableAuthInfoDAO
 
-import scala.concurrent.{ ExecutionContext, Future }
+import scala.concurrent.{ExecutionContext, Future}
 import scala.reflect.ClassTag
 
 /**
  * PasswordInfo repository.
  */
-class PasswordInfoImpl @Inject() (userDAO: UserDAO)(implicit val classTag: ClassTag[PasswordInfo], ec: ExecutionContext)
+class PasswordInfoImpl @Inject()(userDAO: UserDAO)
+                                (implicit val classTag: ClassTag[PasswordInfo], ec: ExecutionContext)
   extends DelegableAuthInfoDAO[PasswordInfo] {
 
   /**
@@ -25,7 +26,7 @@ class PasswordInfoImpl @Inject() (userDAO: UserDAO)(implicit val classTag: Class
   /**
    * Adds new passwordInfo for specified loginInfo
    *
-   * @param loginInfo user's email
+   * @param loginInfo    user's email
    * @param passwordInfo user's hashed password
    */
   override def add(loginInfo: LoginInfo, passwordInfo: PasswordInfo): Future[PasswordInfo] = update(loginInfo, passwordInfo)
@@ -33,7 +34,7 @@ class PasswordInfoImpl @Inject() (userDAO: UserDAO)(implicit val classTag: Class
   /**
    * Updates passwordInfo for specified loginInfo
    *
-   * @param loginInfo user's email
+   * @param loginInfo    user's email
    * @param passwordInfo user's hashed password
    */
   override def update(loginInfo: LoginInfo, passwordInfo: PasswordInfo): Future[PasswordInfo] = userDAO.find(loginInfo).flatMap {
@@ -44,7 +45,7 @@ class PasswordInfoImpl @Inject() (userDAO: UserDAO)(implicit val classTag: Class
   /**
    * Adds new passwordInfo for specified loginInfo
    *
-   * @param loginInfo user's email
+   * @param loginInfo    user's email
    * @param passwordInfo user's hashed password
    */
   override def save(loginInfo: LoginInfo, passwordInfo: PasswordInfo): Future[PasswordInfo] = update(loginInfo, passwordInfo)

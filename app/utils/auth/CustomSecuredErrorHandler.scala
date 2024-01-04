@@ -1,8 +1,8 @@
 package utils.auth
 
-import play.api.i18n.{ I18nSupport, Lang, MessagesApi }
+import play.api.i18n.{I18nSupport, MessagesApi}
 import play.api.libs.json.Json
-import play.api.mvc.{ AnyContent, Request, RequestHeader }
+import play.api.mvc.RequestHeader
 import play.api.mvc.Results._
 import play.silhouette.api.actions.SecuredErrorHandler
 
@@ -14,7 +14,7 @@ import scala.concurrent.Future
  *
  * @param messagesApi The Play messages API.
  */
-class CustomSecuredErrorHandler @Inject() (val messagesApi: MessagesApi) extends SecuredErrorHandler with I18nSupport {
+class CustomSecuredErrorHandler @Inject()(val messagesApi: MessagesApi) extends SecuredErrorHandler with I18nSupport {
   /**
    * Called when a user is not authenticated.
    *

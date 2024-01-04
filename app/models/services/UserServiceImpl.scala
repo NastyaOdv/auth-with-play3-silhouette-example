@@ -1,11 +1,11 @@
 package models.services
 
-import javax.inject.Inject
 import models.User
 import models.daos.UserDAO
 import play.silhouette.api.LoginInfo
 
-import scala.concurrent.{ ExecutionContext, Future }
+import javax.inject.Inject
+import scala.concurrent.{ExecutionContext, Future}
 
 /**
  * Handles actions to users.
@@ -13,7 +13,8 @@ import scala.concurrent.{ ExecutionContext, Future }
  * @param userDAO The user DAO implementation.
  * @param ex      The execution context.
  */
-class UserServiceImpl @Inject() (userDAO: UserDAO)(implicit ex: ExecutionContext) extends UserService {
+class UserServiceImpl @Inject()(userDAO: UserDAO)
+                               (implicit ex: ExecutionContext) extends UserService {
 
   /**
    * Retrieves a user that matches the specified login info.
