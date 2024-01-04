@@ -8,13 +8,12 @@ import play.silhouette.api.LoginInfo
 import slick.jdbc.JdbcProfile
 import slick.jdbc.PostgresProfile.api._
 
-import scala.concurrent.{ExecutionContext, Future}
+import scala.concurrent.{ ExecutionContext, Future }
 
 /**
  * Gives access to the user storage.
  */
-class UserDAOImpl @Inject()(protected val dbConfigProvider: DatabaseConfigProvider)
-                           (implicit ec: ExecutionContext) extends UserDAO {
+class UserDAOImpl @Inject() (protected val dbConfigProvider: DatabaseConfigProvider)(implicit ec: ExecutionContext) extends UserDAO {
 
   private val users = TableQuery[UserTable]
 

@@ -2,7 +2,7 @@ package utils.auth
 
 import models.User
 import play.api.mvc.Request
-import play.silhouette.api.{Authenticator, Authorization}
+import play.silhouette.api.{ Authenticator, Authorization }
 
 import scala.concurrent.Future
 

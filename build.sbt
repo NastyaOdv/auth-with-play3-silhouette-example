@@ -6,7 +6,7 @@ name := "auth-with-play-silhouette-example"
 
 version := "1.0-SNAPSHOT"
 
-scalaVersion := "2.13.0"
+scalaVersion := "2.13.12"
 
 resolvers += Resolver.jcenterRepo
 
@@ -27,7 +27,7 @@ libraryDependencies ++= Seq(
   "org.playframework" %% "play-slick" % playSlickVersion,
   "org.playframework" %% "play-slick-evolutions" % playSlickVersion,
   //it's org.postgresql.ds.PGSimpleDataSource dependency
-  "org.postgresql" % "postgresql" % "42.5.4",
+  "org.postgresql" % "postgresql" % "42.7.1",
   guice,
   filters
 )

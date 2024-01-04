@@ -2,7 +2,7 @@ package models
 
 import org.apache.pekko.http.javadsl.model.DateTime
 import play.silhouette.api.util.PasswordInfo
-import play.silhouette.api.{Identity, LoginInfo}
+import play.silhouette.api.{ Identity, LoginInfo }
 import play.silhouette.impl.providers.CredentialsProvider
 import play.silhouette.password.BCryptSha256PasswordHasher
 
@@ -17,14 +17,14 @@ import java.time.LocalDate
  * @param dateOfBirth the user's birth ()
  */
 case class User(
-                 id: Option[Long],
-                 email: String,
-                 name: String,
-                 lastName: String,
-                 password: Option[String] = None,
-                 dateOfBirth: LocalDate,
-                 dateOfCreation: Option[DateTime]
-               ) extends Identity {
+  id: Option[Long],
+  email: String,
+  name: String,
+  lastName: String,
+  password: Option[String] = None,
+  dateOfBirth: LocalDate,
+  dateOfCreation: Option[DateTime]
+) extends Identity {
 
   /**
    * Generates login info from email

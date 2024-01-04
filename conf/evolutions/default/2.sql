@@ -10,9 +10,7 @@ create table play_silhouette.users
     name       varchar(64)  not null,
     "lastName" varchar(64)  not null,
     password   varchar(128) not null,
-    email      varchar(100) not null,
-    "dateOfBirth" DATE NOT NULL,
-    "dateOfCreation" TIMESTAMP NOT NULL
+    email      varchar(100) not null
 );
 
 create unique index users_id_uindex

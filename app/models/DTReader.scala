@@ -1,7 +1,7 @@
 package models
 
 import org.apache.pekko.http.javadsl.model.DateTime
-import play.api.libs.json.{JsSuccess, Reads}
+import play.api.libs.json.{ JsSuccess, Reads }
 
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter

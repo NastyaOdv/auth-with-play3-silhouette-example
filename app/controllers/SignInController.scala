@@ -1,23 +1,22 @@
 package controllers
 
 import play.api.i18n.Lang
-import play.api.libs.json.{JsString, Json}
-import play.api.mvc.{AnyContent, Request}
+import play.api.libs.json.{ JsString, Json, OFormat }
+import play.api.mvc.{ AnyContent, Request }
 import play.silhouette.api.exceptions.ProviderException
 import play.silhouette.api.util.Credentials
 
 import javax.inject.Inject
-import scala.concurrent.{ExecutionContext, Future}
+import scala.concurrent.{ ExecutionContext, Future }
 
 /**
  * The `Sign In` controller.
  */
-class SignInController @Inject()(scc: SilhouetteControllerComponents)
-                                (implicit ex: ExecutionContext) extends SilhouetteController(scc) {
+class SignInController @Inject() (scc: SilhouetteControllerComponents)(implicit ex: ExecutionContext) extends SilhouetteController(scc) {
 
   case class SignInModel(email: String, password: String)
 
-  implicit val signInFormat = Json.format[SignInModel]
+  implicit val signInFormat: OFormat[SignInModel] = Json.format[SignInModel]
 
   /**
    * Handles sign in request

@@ -3,13 +3,13 @@ package controllers
 import models.services.UserService
 import play.api.Logging
 import play.api.http.FileMimeTypes
-import play.api.i18n.{I18nSupport, Langs, MessagesApi}
+import play.api.i18n.{ I18nSupport, Langs, MessagesApi }
 import play.api.mvc._
-import play.silhouette.api.actions.{SecuredActionBuilder, UnsecuredActionBuilder}
+import play.silhouette.api.actions.{ SecuredActionBuilder, UnsecuredActionBuilder }
 import play.silhouette.api.repositories.AuthInfoRepository
 import play.silhouette.api.services.AuthenticatorService
-import play.silhouette.api.util.{Clock, PasswordHasherRegistry}
-import play.silhouette.api.{EventBus, Silhouette}
+import play.silhouette.api.util.{ Clock, PasswordHasherRegistry }
+import play.silhouette.api.{ EventBus, Silhouette }
 import play.silhouette.impl.providers.CredentialsProvider
 import utils.auth.JWTEnvironment
 
@@ -71,18 +71,18 @@ trait SilhouetteControllerComponents extends MessagesControllerComponents with S
 /**
  * Default Silhouette controller implementation
  */
-final case class DefaultSilhouetteControllerComponents @Inject()(
-                                                                  silhouette: Silhouette[JWTEnvironment],
-                                                                  userService: UserService,
-                                                                  authInfoRepository: AuthInfoRepository,
-                                                                  passwordHasherRegistry: PasswordHasherRegistry,
-                                                                  clock: Clock,
-                                                                  credentialsProvider: CredentialsProvider,
-                                                                  messagesActionBuilder: MessagesActionBuilder,
-                                                                  actionBuilder: DefaultActionBuilder,
-                                                                  parsers: PlayBodyParsers,
-                                                                  messagesApi: MessagesApi,
-                                                                  langs: Langs,
-                                                                  fileMimeTypes: FileMimeTypes,
-                                                                  executionContext: scala.concurrent.ExecutionContext
-                                                                ) extends SilhouetteControllerComponents
+final case class DefaultSilhouetteControllerComponents @Inject() (
+  silhouette: Silhouette[JWTEnvironment],
+  userService: UserService,
+  authInfoRepository: AuthInfoRepository,
+  passwordHasherRegistry: PasswordHasherRegistry,
+  clock: Clock,
+  credentialsProvider: CredentialsProvider,
+  messagesActionBuilder: MessagesActionBuilder,
+  actionBuilder: DefaultActionBuilder,
+  parsers: PlayBodyParsers,
+  messagesApi: MessagesApi,
+  langs: Langs,
+  fileMimeTypes: FileMimeTypes,
+  executionContext: scala.concurrent.ExecutionContext
+) extends SilhouetteControllerComponents

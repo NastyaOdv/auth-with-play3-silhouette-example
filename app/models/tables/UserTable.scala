@@ -38,5 +38,5 @@ class UserTable(tag: Tag) extends Table[User](tag, Some("play_silhouette"), "use
    * In this case, we are simply passing the id, name, email and password parameters to the User case classes
    * apply and unapply methods.
    */
-  def * = (id, email, name, lastName, password, dateOfBirth, dateOfCreation.?) <> ((User.apply _).tupled, User.unapply)
+  def * = (id, email, name, lastName, password, dateOfBirth, dateOfCreation.?).<>((User.apply _).tupled, User.unapply)
 }

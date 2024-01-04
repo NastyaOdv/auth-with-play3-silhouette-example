@@ -5,14 +5,13 @@ import play.silhouette.api.LoginInfo
 import play.silhouette.api.util.PasswordInfo
 import play.silhouette.persistence.daos.DelegableAuthInfoDAO
 
-import scala.concurrent.{ExecutionContext, Future}
+import scala.concurrent.{ ExecutionContext, Future }
 import scala.reflect.ClassTag
 
 /**
  * PasswordInfo repository.
  */
-class PasswordInfoImpl @Inject()(userDAO: UserDAO)
-                                (implicit val classTag: ClassTag[PasswordInfo], ec: ExecutionContext)
+class PasswordInfoImpl @Inject() (userDAO: UserDAO)(implicit val classTag: ClassTag[PasswordInfo], ec: ExecutionContext)
   extends DelegableAuthInfoDAO[PasswordInfo] {
 
   /**

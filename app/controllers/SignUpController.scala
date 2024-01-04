@@ -4,18 +4,17 @@ import models.User
 import org.apache.pekko.http.scaladsl.model.DateTime
 import play.api.i18n.Lang
 import play.api.libs.json._
-import play.api.mvc.{AnyContent, Request}
+import play.api.mvc.{ AnyContent, Request }
 import play.silhouette.api.LoginInfo
 import play.silhouette.impl.providers.CredentialsProvider
 
 import javax.inject.Inject
-import scala.concurrent.{ExecutionContext, Future}
+import scala.concurrent.{ ExecutionContext, Future }
 
 /**
  * The `Sign Up` controller.
  */
-class SignUpController @Inject()(components: SilhouetteControllerComponents)
-                                (implicit ex: ExecutionContext) extends SilhouetteController(components) {
+class SignUpController @Inject() (components: SilhouetteControllerComponents)(implicit ex: ExecutionContext) extends SilhouetteController(components) {
 
   /**
    * Handles sign up request
