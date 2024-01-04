@@ -1,11 +1,12 @@
 package utils.auth
 
-import javax.inject.Inject
-import play.api.i18n.{ I18nSupport, MessagesApi }
-import play.api.mvc.RequestHeader
+import play.api.i18n.{ I18nSupport, Lang, MessagesApi }
+import play.api.libs.json.Json
+import play.api.mvc.{ AnyContent, Request, RequestHeader }
 import play.api.mvc.Results._
 import play.silhouette.api.actions.SecuredErrorHandler
 
+import javax.inject.Inject
 import scala.concurrent.Future
 
 /**
@@ -14,7 +15,6 @@ import scala.concurrent.Future
  * @param messagesApi The Play messages API.
  */
 class CustomSecuredErrorHandler @Inject() (val messagesApi: MessagesApi) extends SecuredErrorHandler with I18nSupport {
-
   /**
    * Called when a user is not authenticated.
    *
@@ -24,7 +24,11 @@ class CustomSecuredErrorHandler @Inject() (val messagesApi: MessagesApi) extends
    * @return The result to send to the client.
    */
   override def onNotAuthenticated(implicit request: RequestHeader) = {
-    Future.successful(Unauthorized)
+    val jsonResponse = Json.obj(
+      "code" -> 401,
+      "message" -> "Authentication failed. Given policy has not granted."
+    )
+    Future.successful(Unauthorized(jsonResponse))
   }
 
   /**
@@ -36,6 +40,10 @@ class CustomSecuredErrorHandler @Inject() (val messagesApi: MessagesApi) extends
    * @return The result to send to the client.
    */
   override def onNotAuthorized(implicit request: RequestHeader) = {
-    Future.successful(Forbidden)
+    val jsonResponse = Json.obj(
+      "code" -> 403,
+      "message" -> "User is authenticated but not authorized."
+    )
+    Future.successful(Forbidden(jsonResponse))
   }
 }

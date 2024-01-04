@@ -1,5 +1,6 @@
 package utils.auth
 
+import play.api.libs.json.Json
 import play.api.mvc.RequestHeader
 import play.api.mvc.Results._
 import play.silhouette.api.actions.UnsecuredErrorHandler
@@ -20,6 +21,10 @@ class CustomUnsecuredErrorHandler extends UnsecuredErrorHandler {
    * @return The result to send to the client.
    */
   override def onNotAuthorized(implicit request: RequestHeader) = {
-    Future.successful(Forbidden)
+    val jsonResponse = Json.obj(
+      "code" -> 403,
+      "message" -> "User is authenticated but not authorized."
+    )
+    Future.successful(Forbidden(jsonResponse))
   }
 }
